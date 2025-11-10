@@ -1,0 +1,19 @@
+# Core dependencies
+torch>=2.0.0
+transformers>=4.37.0
+accelerate>=0.20.0
+
+# Web UI
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# VL Model support
+qwen-vl-utils>=0.0.8
+Pillow>=10.0.0
+
+# Model downloading
+huggingface-hub>=0.19.0
+
+# Optional: For faster inference
+# bitsandbytes>=0.41.0  # For quantization
+# optimum>=1.14.0  # For optimization
