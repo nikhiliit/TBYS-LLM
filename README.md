@@ -55,11 +55,11 @@ Think it before you speak - A web interface for Qwen language models.
 
 3. **Download models:**
    ```bash
-   # Text model
+   # Text model - downloads to models/ directory
    python -c "from src.models.qwen_manager import Qwen3Manager; m = Qwen3Manager(); m.download_model()"
 
-   # Vision-Language model (optional)
-   # Models are expected to be in models_vl/ directory
+   # Vision-Language model should be placed in models_vl/ directory
+   # Download from: https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct
    ```
 
 ## Usage
