@@ -2,7 +2,7 @@
 
 from flask import Blueprint, jsonify
 
-from models import Qwen3Manager, Qwen3VLManager
+from ..models import Qwen3Manager, Qwen3VLManager
 
 health_bp = Blueprint('health', __name__)
 

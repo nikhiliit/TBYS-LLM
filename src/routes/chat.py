@@ -5,8 +5,8 @@ from typing import List
 
 from flask import Blueprint, request, Response, stream_with_context, jsonify
 
-from database import db_manager
-from models import Qwen3Manager, Qwen3VLManager, StreamingGenerator
+from ..database import db_manager
+from ..models import Qwen3Manager, Qwen3VLManager, StreamingGenerator
 
 chat_bp = Blueprint('chat', __name__)
 

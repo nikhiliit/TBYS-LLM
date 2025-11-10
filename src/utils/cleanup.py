@@ -2,8 +2,8 @@
 
 from datetime import datetime, timedelta
 
-from database import db_manager
-from config import Config
+from ..database import db_manager
+from ..config import Config
 
 
 def cleanup_old_conversations(days: int = None) -> int:

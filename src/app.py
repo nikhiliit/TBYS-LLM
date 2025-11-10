@@ -6,11 +6,11 @@ from pathlib import Path
 
 from flask import Flask, render_template
 
-from config import Config
-from database import db_manager
-from models import Qwen3Manager, Qwen3VLManager
-from routes import chat_bp, conversations_bp, health_bp
-from utils import cleanup_old_conversations
+from .config import Config
+from .database import db_manager
+from .models import Qwen3Manager, Qwen3VLManager
+from .routes import chat_bp, conversations_bp, health_bp
+from .utils import cleanup_old_conversations
 
 
 def create_app(config_class=Config) -> Flask:

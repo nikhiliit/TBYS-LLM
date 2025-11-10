@@ -2,7 +2,7 @@
 
 from flask import Blueprint, jsonify, request
 
-from database import db_manager
+from ..database import db_manager
 
 conversations_bp = Blueprint('conversations', __name__)
 

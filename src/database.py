@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional, Any
 
-from config import Config
+from .config import Config
 
 
 class DatabaseManager:
