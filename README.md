@@ -74,7 +74,7 @@ Options:
 - `--host HOST`: Server host (default: 0.0.0.0)
 - `--port PORT`: Server port (default: 8080)
 - `--skip-text`: Skip loading text model
-- `--skip-vl`: Skip loading vision-language model
+- `--enable-vl`: Enable loading VL model (VL is skipped by default)
 - `--cpu`: Force CPU usage
 
 ## Configuration
