@@ -31,9 +31,9 @@ class Config:
     MAX_CONVERSATIONS = int(os.getenv('MAX_CONVERSATIONS', '100'))
     CLEANUP_DAYS = int(os.getenv('CLEANUP_DAYS', '5'))
 
-    # Template and static folders
-    TEMPLATE_FOLDER = Path('templates')
-    STATIC_FOLDER = Path('static')
+    # Template and static folders (relative to project root)
+    TEMPLATE_FOLDER = Path(__file__).parent.parent / 'templates'
+    STATIC_FOLDER = Path(__file__).parent.parent / 'static'
 
     @classmethod
     def get_db_path(cls) -> Path:
