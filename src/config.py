@@ -20,7 +20,7 @@ class Config:
     DB_PATH = Path(os.getenv('DB_PATH', 'qwen3_chat.db'))
 
     # Model settings
-    TEXT_MODEL_PATH = os.getenv('TEXT_MODEL_PATH', './models/models--Qwen--Qwen3-0.6B/snapshots')
+    TEXT_MODEL_PATH = os.getenv('TEXT_MODEL_PATH', './models')
     VL_MODEL_PATH = os.getenv('VL_MODEL_PATH', './models_vl')
 
     # Model parameters
