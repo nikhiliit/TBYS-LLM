@@ -78,8 +78,8 @@ def load_models(app: Flask, args: argparse.Namespace) -> bool:
             print("❌ Failed to load text model!")
             success = False
 
-    # Load VL model
-    if not args.skip_vl and Path(Config.VL_MODEL_PATH).exists():
+    # Load VL model (only if explicitly enabled)
+    if args.enable_vl and Path(Config.VL_MODEL_PATH).exists():
         print("🔄 Loading VL model...")
         vl_manager = Qwen3VLManager(Config.VL_MODEL_PATH)
 
@@ -105,8 +105,8 @@ def main():
                        help=f'Port to bind to (default: {Config.PORT})')
     parser.add_argument('--skip-text', action='store_true',
                        help='Skip loading text model')
-    parser.add_argument('--skip-vl', action='store_true',
-                       help='Skip loading VL model')
+    parser.add_argument('--enable-vl', action='store_true',
+                       help='Enable loading VL model (overrides default skip)')
     parser.add_argument('--cpu', action='store_true',
                        help='Force CPU usage instead of MPS/CUDA')
 
