@@ -10,6 +10,8 @@ from .config import Config
 from .database import db_manager
 from .models import Qwen3Manager, Qwen3VLManager
 from .routes import chat_bp, conversations_bp, health_bp
+from .routes.chat import init_chat_models
+from .routes.health import init_health_models
 from .utils import cleanup_old_conversations
 
 
@@ -86,6 +88,10 @@ def load_models(app: Flask, args: argparse.Namespace) -> bool:
         else:
             print("❌ Failed to load VL model!")
             success = False
+
+    # Initialize model instances in blueprints
+    init_chat_models(text_manager, vl_manager)
+    init_health_models(text_manager, vl_manager)
 
     return success
 

@@ -10,10 +10,15 @@ from ..models import Qwen3Manager, Qwen3VLManager, StreamingGenerator
 
 chat_bp = Blueprint('chat', __name__)
 
-# Global model instances (initialized in main app)
-text_manager: Qwen3Manager = None
-vl_manager: Qwen3VLManager = None
-current_model_type = 'qwen3-text'
+# Model instances will be set by the main app
+_models = {}
+
+
+def init_chat_models(text_mgr, vl_mgr):
+    """Initialize model instances for the chat blueprint."""
+    _models['text_manager'] = text_mgr
+    _models['vl_manager'] = vl_mgr
+    _models['current_model_type'] = 'qwen3-text'
 
 
 def handle_vl_chat(
@@ -59,7 +64,6 @@ def handle_vl_chat(
 @chat_bp.route('/api/chat', methods=['POST'])
 def chat():
     """Main chat endpoint with streaming support."""
-    global text_manager, vl_manager, current_model_type
 
     data = request.json
     if not data:
@@ -85,8 +89,8 @@ def chat():
     db_manager.save_message(conversation_id, "user", prompt)
 
     # Handle VL model for PDF images
-    if pdf_images and vl_manager and vl_manager.model:
-        current_model_type = 'qwen3-vl'
+    if pdf_images and _models.get('vl_manager') and _models['vl_manager'].model:
+        _models['current_model_type'] = 'qwen3-vl'
 
         def generate():
             yield from handle_vl_chat(
@@ -104,13 +108,13 @@ def chat():
         )
 
     # Handle text model
-    elif text_manager and text_manager.model:
-        current_model_type = 'qwen3-text'
+    elif _models.get('text_manager') and _models['text_manager'].model:
+        _models['current_model_type'] = 'qwen3-text'
 
         def generate():
             try:
                 generator = StreamingGenerator(
-                    text_manager, prompt, conversation_id,
+                    _models['text_manager'], prompt, conversation_id,
                     enable_thinking, max_new_tokens, temperature, pdf_images
                 )
 
