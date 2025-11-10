@@ -11,6 +11,18 @@ Think it before you speak - A web interface for Qwen language models.
 - Modern responsive UI
 - Support for text and vision-language models
 
+## Screenshots
+
+### Welcome Page
+![TBYS-LLM Welcome Page](./figures/Fig1.png)
+
+### Thinking Mode
+![Thinking Mode 1](./figures/Fig2.png)
+![Thinking Mode 2](./figures/Fig3.png)
+
+### Chat Interface
+![Chat Output](./figures/Fig4.png)
+
 ## Project Structure
 
 ```
